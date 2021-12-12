@@ -48,7 +48,7 @@ class PizzaController extends Controller
             'image' => $path
         ]);
 
-        return redirect()->route('pizza.index');
+        return redirect()->route('pizza.index')->with('message', 'Pizza add successfully!');
     }
 
     /**
