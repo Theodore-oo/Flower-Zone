@@ -30,20 +30,26 @@
                             </tr>
                         </thead>
                         <tbody> 
-                        @foreach ($pizzas as $key=>$pizza)
-                            <tr>
-                                    <th scope="row">{{$key+1}}</th>
-                                    <td><img src="{{ Storage::url($pizza->image) }}" width="80"></td>
-                                    <td>{{$pizza->name}}</td>
-                                    <td>{{$pizza->description}}</td>
-                                    <td>{{$pizza->category}}</td>
-                                    <td>{{$pizza->small_pizza_price}}</td>
-                                    <td>{{$pizza->medium_pizza_price}}</td>
-                                    <td>{{$pizza->large_pizza_price}}</td>
-                                    <td><button class="btn btn-primary">Edit</button></td>
-                                    <td><button class="btn btn-danger">Delete</button></td>
-                            </tr>
-                        @endforeach
+                            @if (count($pizzas)>0)
+
+                                @foreach ($pizzas as $key=>$pizza)
+                                    <tr>
+                                            <th scope="row">{{$key+1}}</th>
+                                            <td><img src="{{ Storage::url($pizza->image) }}" width="80"></td>
+                                            <td>{{$pizza->name}}</td>
+                                            <td>{{$pizza->description}}</td>
+                                            <td>{{$pizza->category}}</td>
+                                            <td>{{$pizza->small_pizza_price}}</td>
+                                            <td>{{$pizza->medium_pizza_price}}</td>
+                                            <td>{{$pizza->large_pizza_price}}</td>
+                                            <td><a href="{{route('pizza.edit',$pizza->id)}}"><button class="btn btn-primary">Edit</button></a></td>
+                                            <td><button class="btn btn-danger">Delete</button></td>
+                                    </tr>
+                                @endforeach
+
+                            @else 
+                            <p>No Pizzas to show.</p>
+                            @endif
                         </tbody>
                     </table>
                 </div>
