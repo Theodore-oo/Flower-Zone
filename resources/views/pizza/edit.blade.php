@@ -6,9 +6,25 @@
 
         <!--Pizza-->
         <div class="col-md-8">
+
+            @if(count($errors)>0)
+            <div class="card mt-5">
+                <div class="card-body">
+                    <div>
+                        <div class="alert alert-danger">
+                            @foreach ( $errors->all() as $error)
+                            <p> {{ $error }} </p> 
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
+
             <div class="card">
                 <div class="card-header">Edit Pizza</div>
-                <form action="{{route('pizza.store')}}" method="post" enctype="multipart/form-data">@csrf
+                <form action="{{route('pizza.update',$pizza->id)}}" method="post" enctype="multipart/form-data">@csrf
+                    @method('PUT')
                     <div class="card-body">
                         <div class="form-control">
                             <label for="name">Name of Pizza</label>
