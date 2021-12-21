@@ -23,6 +23,7 @@
                                <th scope="col">Small Pizza</th>
                                <th scope="col">Medium Pizza</th>
                                <th scope="col">Large Pizza</th>
+                               <th scope="col">Total ($)</th>
                                <th scope="col">Message</th>
                                <th scope="col">Status</th>
                                <th scope="col">Accept</th>
@@ -34,12 +35,16 @@
                            @foreach ($orders as $order)
                            <tr>
                                <th>{{$order->user->name}}</th>
-                               <th>{{$order->user->email}}</th>
+                               <th>{{$order->user->email}}<br>{{$order->phone}}</th>
                                <th>{{$order->date}}/{{$order->time}}</th>
                                <th>{{$order->pizza->name}}</th>
                                <th>{{$order->small_pizza}}</th>
                                <th>{{$order->medium_pizza}}</th>
                                <th>{{$order->large_pizza}}</th>
+                               <th>$ {{ ($order->pizza->small_pizza_price * $order->small_pizza) +
+                                ($order->pizza->medium_pizza_price * $order->medium_pizza) +
+                                ($order->pizza->large_pizza_price * $order->large_pizza) 
+                                   }}</th>
                                <th>{{$order->body}}</th>
                                <th>{{$order->status}}</th>
 
