@@ -31,20 +31,22 @@
                            </tr>
                        </thead>
                        <tbody>
+                           @foreach ($orders as $order)
                            <tr>
-                               <th>Mark</th>
-                               <th>Otto</th>
-                               <th>@mdo</th>
-                               <th>Mark</th>
-                               <th>Otto</th>
-                               <th>@mdo</th>
-                               <th>Mark</th>
-                               <th>Otto</th>
-                               <th>@mdo</th>
+                               <th>{{$order->user->name}}</th>
+                               <th>{{$order->user->email}}</th>
+                               <th>{{$order->date}}/{{$order->time}}</th>
+                               <th>{{$order->pizza->name}}</th>
+                               <th>{{$order->small_pizza}}</th>
+                               <th>{{$order->medium_pizza}}</th>
+                               <th>{{$order->large_pizza}}</th>
+                               <th>{{$order->body}}</th>
+                               <th>{{$order->status}}</th>
                                <th><button class="btn btn-primary">Accept</button></th>
                                <th><button class="btn btn-primary">Reject</button></th>
                                <th><button class="btn btn-primary">Completed</button></th>
                            </tr>
+                           @endforeach
                        </tbody>
                    </table>
                 </div>
