@@ -42,9 +42,19 @@
                                <th>{{$order->large_pizza}}</th>
                                <th>{{$order->body}}</th>
                                <th>{{$order->status}}</th>
-                               <th><button class="btn btn-primary">Accept</button></th>
-                               <th><button class="btn btn-primary">Reject</button></th>
-                               <th><button class="btn btn-primary">Completed</button></th>
+
+                               <form action="{{route('order.status',$order->id)}}" method="post">@csrf
+                               <th>
+                                   <input name="status" type="submit" value="accepted" class="btn btn-primary btn-sm">
+                                </th>
+                               <th>
+                                    <input name="status" type="submit" value="rejected" class="btn btn-danger btn-sm">
+                                </th>
+                               <th>
+                                    <input name="status" type="submit" value="completed" class="btn btn-success btn-sm">
+                                </th>
+                               </form>
+
                            </tr>
                            @endforeach
                        </tbody>
