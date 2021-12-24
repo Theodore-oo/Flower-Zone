@@ -13,17 +13,27 @@
                             <div class="form-group">
                                 <p>Name : {{auth()->user()->name}}</p>
                                 <p>Email : {{auth()->user()->email}}</p>
-                                <p>Phone number : <input type="number" class="form-control" name="phone"></p>
+                                <p>Phone number : <input type="number" class="form-control" name="phone" required></p>
                                 <p>Small Pizza Order : <input type="number" class="form-control" name="small_pizza" value="0"></p>
                                 <p>Medium Pizza Order : <input type="number" class="form-control" name="medium pizza" value="0"></p>
                                 <p>Large Pizza Order : <input type="number" class="form-control" name="large_pizza" value="0"></p>
                                 <p><input type="hidden" name="pizza_id" value="{{$pizza->id}}"></p>
-                                <p><input type="date" name="date" class="form-control"></p>
-                                <p><input type="time" name="time" class="form-control"></p>
-                                <p><textarea name="body" class="form-control"></textarea></p>
-                                <p>
+                                <p><input type="date" name="date" class="form-control" required></p>
+                                <p><input type="time" name="time" class="form-control" required></p>
+                                <p><textarea name="body" class="form-control" required></textarea></p>
+                                <p class="text-center">
                                     <button class="btn btn-danger" type="submit">Make Order</button>
                                 </p>
+                                @if (session('message'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('message') }}
+                                    </div>
+                                @endif
+                                @if (session('errmessage'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ session('errmessage') }}
+                                    </div>
+                                @endif
                             </div>
                         </form>
                    @else
