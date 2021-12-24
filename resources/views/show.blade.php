@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                    @if(Auth::check())
-                        <form action="" method="post">@csrf
+                        <form action="{{route('order.store')}}" method="post">@csrf
                             <div class="form-group">
                                 <p>Name : {{auth()->user()->name}}</p>
                                 <p>Email : {{auth()->user()->email}}</p>
@@ -17,6 +17,10 @@
                                 <p>Small Pizza Order : <input type="number" class="form-control" name="small_pizza" value="0"></p>
                                 <p>Medium Pizza Order : <input type="number" class="form-control" name="medium pizza" value="0"></p>
                                 <p>Large Pizza Order : <input type="number" class="form-control" name="large_pizza" value="0"></p>
+                                <p><input type="hidden" name="pizza_id" value="{{$pizza->id}}"></p>
+                                <p><input type="date" name="date" class="form-control"></p>
+                                <p><input type="time" name="time" class="form-control"></p>
+                                <p><textarea name="body" class="form-control"></textarea></p>
                                 <p>
                                     <button class="btn btn-danger" type="submit">Make Order</button>
                                 </p>
