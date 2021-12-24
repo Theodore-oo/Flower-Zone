@@ -28,7 +28,7 @@ Route::get('/pizza/{id}', [App\Http\Controllers\FrontendController::class, 'show
 
 Route::post('/order/store', [App\Http\Controllers\FrontendController::class, 'store'])->name('order.store');
 
-Route::group(['middleware'=>'auth','admin'],function(){
+Route::group(['prefix'=>'admin','middleware'=>'auth','admin'],function(){
 
     Route::get('/pizza', [App\Http\Controllers\PizzaController::class, 'index'])->name('pizza.index');
 
