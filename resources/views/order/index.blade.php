@@ -10,8 +10,10 @@
                 </ol>
             </nav>
             <div class="card">
-                <div class="card-header">Orders</div>
-
+                <div class="card-header">Orders
+                    <a href="{{route('pizza.create')}}" style="float:right;">Create Pizza</a>
+                    <a href="{{route('pizza.index')}}" style="float:right; margin-right:30px;">View Pizza</a>
+                </div>
                 <div class="card-body">
                    <table class="table table-bordered">
                        <thead>
